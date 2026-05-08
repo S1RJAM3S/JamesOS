@@ -1,0 +1,33 @@
+#!/bin/bash
+
+TEMPLATES_PATH="$HOME/.config/sirjames/themed"
+TMP_THEME_PATH="${$TMP_THEME_PATH:-$HOME/.config/sirjames/current/theme}"
+COLORS_FILE="$TMP_THEME_PATH/colors.toml"
+
+[[ -f "$COLORS_FILE" ]] || exit 0
+
+sed_cmds=$(awk -F '[[:space:]]*=[[:space:]]*' '
+	/^[[:space:]]*[^#].*=/ {
+		key = $1; gsub(/["'\'' ]/, "", key);
+		val = $2; sub(/^["'\'']/, "", val); sub(/["'\''](.*)$/, "", val);
+
+		printf "s|{{ %s }}|%s|g;", key, val;
+
+		strip = val; sub(/^#/, "", strip);
+		printf "s|{{ %s_strip }}|%s|g;", key, strip;
+
+		if (val ~ /^#[0-9a-fA-F]{6}$/) {
+			r = strtonum("0x" substr(val, 2, 2));
+			g = strtonum("0x" substr(val, 4, 2));
+			b = strtonum("0x" substr(val, 6, 2));
+			printf "s|{{ %s_rgb }}|%d,%d,%d|g;", key, r, g, b;
+		}
+	}
+' "$COLORS_FILE")
+
+shopt -s nullglob
+
+for tpl in "$TEMPLATES_PATH"/*.tpl; do
+	filename=$(basename "$tpl" .tpl)
+	sed "$sed_cmds" "$tpl" > "$TMP_THEME_PATH/$filename"
+done

@@ -1,0 +1,27 @@
+#!/bin/bash
+
+CURRENT_THEME_PATH="$HOME/.config/sirjames/current/theme"
+SIRJAMES_THEMES_PATH="$HOME/.config/sirjames/themes"
+
+THEME_NAME=$(echo "$1" | sed -E 's/<[^>]+>//g' | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
+
+if [[ ! -d "$SIRJAMES_THEMES_PATH/$THEME_NAME" ]]; then
+	echo "[404] Theme '$THEME_NAME' not found"
+	exit 1
+fi
+
+TMP_THEME_PATH=$(mktemp -d -t sirjames-theme-tmp)
+
+trap 'rm -rf "$TMP_THEME_PATH"' EXIT
+
+[[ -d "$SIRJAMES_THEMES_PATH/$THEME_NAME" ]] && cp -r "$SIRJAMES_THEMES_PATH/$THEME_NAME/"* "$TMP_THEME_PATH" 2>/dev/null
+
+TMP_THEME_PATH="$TMP_THEME_PATH" sirjames-theme-set-templates
+
+mkdir -p "$(dirname "$CURRENT_THEME_PATH")"
+rm -rf "$CURRENT_THEME_PATH"
+cp -r "$TMP_THEME_PATH" "$CURRENT_THEME_PATH"
+
+echo "$THEME_NAME" > "$HOME/.config/sirjames/current/theme.name"
+
+# TODO: Background + Set :>
