@@ -25,3 +25,6 @@ cp -r "$TMP_THEME_PATH" "$CURRENT_THEME_PATH"
 echo "$THEME_NAME" > "$HOME/.config/sirjames/current/theme.name"
 
 # TODO: Background + Set :>
+
+sirjames-restart-terminal
+sirjames-restart-hyprctl

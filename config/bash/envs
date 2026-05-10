@@ -1,0 +1,2 @@
+export SIRJAMES_DATA_PATH=$HOME/.local/share/sirjames
+export PATH=$SIRJAMES_DATA_PATH/bin:$SIRJAMES_DEFAULT_PATH
