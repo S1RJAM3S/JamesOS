@@ -1,2 +1,2 @@
 require("hypr.monitors")
-require("hypr.binds"
+require("hypr.binds")
