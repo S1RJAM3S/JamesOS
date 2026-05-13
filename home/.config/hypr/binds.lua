@@ -25,5 +25,7 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 local l = hl.get_config("general.layout")
 if l == "scrolling" then
 	hl.bind(mainMod .. " + PERIOD", hl.dsp.layout("move +col"))
-	hl.bind(mainMod .. " + COMMA", hl.dsp.layout("swapcol l"))
+	hl.bind(mainMod .. " + COMMA", hl.dsp.layout("move -col"))
+	hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.layout("swapcol r")
+	hl.bind(mainMOd .. " + SHIFT + COMMA", hl.dsp.layout("swapcol l")
 end
