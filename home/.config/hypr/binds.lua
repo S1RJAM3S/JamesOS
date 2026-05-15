@@ -6,7 +6,7 @@ local terminal = [[kitty]]
 local menu = [[sirjames-launcher-walker]]
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd([[uwsm-app -- ]] .. terminal, { description = "Terminal" })
-hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), { description = "App Launcher" })
+hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), { description = "Menu" })
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 
