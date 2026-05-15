@@ -1,3 +1,3 @@
-require("hypr.monitors")
-require("hypr.variables")
-require("hypr.binds")
+require("monitors")
+require("variables")
+require("binds")

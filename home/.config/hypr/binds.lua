@@ -3,9 +3,9 @@
 local mainMod = "SUPER"
 
 local terminal = [[kitty]]
-local menu = [[sirjames-launcher-walker]]
+local menu = [[sirjames-launch-walker]]
 
-hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd([[uwsm-app -- ]] .. terminal, { description = "Terminal" })
+hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd([[uwsm-app -- ]] .. terminal), { description = "Terminal" })
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), { description = "Menu" })
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
@@ -26,6 +26,6 @@ local l = hl.get_config("general.layout")
 if l == "scrolling" then
 	hl.bind(mainMod .. " + PERIOD", hl.dsp.layout("move +col"))
 	hl.bind(mainMod .. " + COMMA", hl.dsp.layout("move -col"))
-	hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.layout("swapcol r")
-	hl.bind(mainMOd .. " + SHIFT + COMMA", hl.dsp.layout("swapcol l")
+	hl.bind(mainMod .. " + SHIFT + PERIOD", hl.dsp.layout("swapcol r"))
+	hl.bind(mainMod .. " + SHIFT + COMMA", hl.dsp.layout("swapcol l"))
 end
