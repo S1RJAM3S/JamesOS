@@ -5,7 +5,7 @@ hl.config({
         border_size = 1,
 	gaps_in = 5,
 	gaps_out = 20,
-	layout = "scrolling"
+	layout = "dwindle"
     },
 
     animations = {
