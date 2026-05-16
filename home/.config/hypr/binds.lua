@@ -37,19 +37,20 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:mag
 local layouts = {"dwindle", "scrolling"}
 
 hl.bind(mainMod .. " + SHIFT + L", function()
-    local w = hl.get_active_workspace()
-    if not w then return end
-    local curr_layout = w.tiled_layout
+    local ws = hl.get_active_workspace()
+    if not ws then return end
+    local curr_layout = ws.tiled_layout
     local next_layout = layouts[get_index(layouts, curr_layout) % #layouts + 1]
-
     if not next_layout then return end
-        hl.workspace_rule({
-	workspace = tostring(w.id or w.name),
+
+    local ws_info = tostring(ws.id or ws.name)
+    hl.workspace_rule({
+	workspace = ws_info,
 	layout = next_layout
     })
 
     hl.notification.create({
-	text = "[LAYOUTS] Switched workspace" .. w .. " from " .. curr_layout .. " to " .. next_layout,
+	text = "[LAYOUTS] Switched workspace" .. ws_info .. " from " .. curr_layout .. " to " .. next_layout,
 	timeout = 3000,
 	icon = "OK"
     })
