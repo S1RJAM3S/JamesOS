@@ -5,6 +5,17 @@ local mainMod = "SUPER"
 local terminal = [[kitty]]
 local menu = [[sirjames-launch-walker]]
 
+local function get_index(list, target)
+    local idx = nil
+    for i, curr in ipairs(list) do
+	if curr == target then
+	    idx = i
+	    break
+	end
+    end
+    return idx
+end
+
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd([[uwsm-app -- ]] .. terminal), { description = "Terminal" })
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), { description = "Menu" })
 
@@ -22,6 +33,27 @@ end
 
 hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+
+local layouts = {"dwindle", "scrolling"}
+
+hl.bind(mainMod .. " + SHIFT + L", function()
+    local w = hl.get_active_workspace()
+    if not w then return end
+    local curr_layout = w.tiled_layout
+    local next_layout = layouts[get_index(layouts, curr_layout) % #layouts + 1]
+
+    if not next_layout then return end
+        hl.workspace_rule({
+	workspace = tostring(w.id or w.name),
+	layout = next_layout
+    })
+
+    hl.notification.create({
+	text = "[LAYOUTS] Switched workspace" .. w .. " from " .. curr_layout .. " to " .. next_layout,
+	timeout = 3000,
+	icon = "OK"
+    })
+end)
 
 local l = hl.get_config("general.layout")
 if l == "scrolling" then
