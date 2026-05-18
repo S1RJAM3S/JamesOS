@@ -1,3 +1,5 @@
+require("envs")
 require("monitors")
 require("variables")
 require("binds")
+require("autostart")

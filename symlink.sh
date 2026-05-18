@@ -6,7 +6,7 @@ SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[@]}" )" &>/dev/null && pwd )
 STOW_DIR="$SCRIPT_DIR"
 
 HOME_DIRS=(
-    "$HOME/.config",
+    "$HOME/.config"
     "$HOME/.local/bin"
 )
 
