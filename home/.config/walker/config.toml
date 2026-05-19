@@ -10,10 +10,17 @@ selection_wrap = true # wrap list if at bottom or top
 [providers]
 default = [
     "desktopapplications",
+    "websearch"
 ]
-
-empty = ["desktopapplications"] # providers to be queried when query is empty
 
 [[providers.prefixes]]
 prefix = "/"
 provider = "providerlist"
+
+[[providers.prefixes]]
+prefix = "@"
+provider = "websearch"
+
+[[emergencies]]
+text = "Restart Walker"
+command = "sirjames-restart-walker"
