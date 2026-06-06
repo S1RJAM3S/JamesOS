@@ -6,7 +6,7 @@ restart_services() {
     fi
 
     if systemctl --user is-enabled app-walker@autostart.service &>/dev/null || \
-    systemctl --user is-active app-walker@autostart.service &>/dev/null; then
+    systemctl --user is-enabled app-walker@autostart.service &>/dev/null; then
     	systemctl --user restart app-walker@autostart.service
     fi
 }

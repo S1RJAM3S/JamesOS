@@ -20,7 +20,3 @@ provider = "providerlist"
 [[providers.prefixes]]
 prefix = "@"
 provider = "websearch"
-
-[[emergencies]]
-text = "Restart Walker"
-command = "sirjames-restart-walker"

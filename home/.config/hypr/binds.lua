@@ -18,6 +18,7 @@ end
 
 hl.bind(mainMod .. " + RETURN", hl.dsp.exec_cmd([[uwsm-app -- ]] .. terminal), { description = "Terminal" })
 hl.bind(mainMod .. " + SPACE", hl.dsp.exec_cmd(menu), { description = "Menu" })
+hl.bind(mainMod .. " + Print", hl.dsp.exec_cmd('grim -g "$(slurp -d)" - | wl-copy'))
 
 hl.bind(mainMod .. " + C", hl.dsp.window.close())
 

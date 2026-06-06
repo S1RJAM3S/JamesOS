@@ -1,7 +1,11 @@
+docker
 flatpak
 libvirt
+linux-headers
 man
+nmap
 nvidia-open-dkms
+openssh
 virt-manager
 wiremix
 xdg-desktop-portal-hyprland
