@@ -47,14 +47,14 @@ hl.bind(mainMod .. " + CTRL + SHIFT + L", function()
 
     local ws_info = tostring(ws.id or ws.name)
     hl.workspace_rule({
-	workspace = ws_info,
-	layout = next_layout
+		workspace = ws_info,
+		layout = next_layout
     })
 
     hl.notification.create({
-	text = "[LAYOUTS] Switched workspace" .. ws_info .. " from " .. curr_layout .. " to " .. next_layout,
-	timeout = 3000,
-	icon = "OK"
+		text = "[LAYOUTS] Switched workspace" .. ws_info .. " from " .. curr_layout .. " to " .. next_layout,
+		timeout = 3000,
+		icon = "OK"
     })
 end)
 
